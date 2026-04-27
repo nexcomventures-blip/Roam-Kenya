@@ -1007,6 +1007,25 @@
         // Replace this with your actual Google Apps Script Web App URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_YOUR_SCRIPT_ID/exec';
 
+        function showSuccess(type) {
+            const formId = type === 'driver' ? 'driverForm' : 'bookingForm';
+            const form = document.getElementById(formId);
+            
+            form.innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                    <h3 style="color: var(--jungle-green);">Submission Received!</h3>
+                    <p>We have recorded your details in our database for Roam Kenya.</p>
+                    <button onclick="location.reload()" class="btn" style="background: var(--charcoal); margin-top: 1rem; width: auto; padding: 0.8rem 2rem;">Send Another</button>
+                    <div style="margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem;">
+                        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Want to chat with us immediately?</p>
+                        <a href="https://wa.me/254722816001" class="btn" style="background: #25D366; display: inline-block; width: auto; padding: 0.8rem 2rem;">Open WhatsApp</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Booking Form Handler
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1023,27 +1042,22 @@
             // 1. Data for Google Sheets
             const formData = new FormData();
             formData.append('Timestamp', timestamp);
+            formData.append('Type', 'Safari Booking');
             formData.append('Name', name);
             formData.append('Package', packageValue);
             formData.append('Travel Date', date);
             formData.append('Payment Method', payment);
             formData.append('Status', 'Pending');
 
-            // 2. Prepare WhatsApp Message
-            const text = `Hi Roam Kenya! 🦁 I'd like to book a safari:%0A%0A*Name:* ${name}%0A*Package:* ${packageValue}%0A*Date:* ${date}%0A*Payment:* ${payment}`;
-            const waUrl = `https://wa.me/254722816001?text=${text}`;
-            
-            // 3. Submit to Google Sheets (Async)
+            // 2. Submit to Google Sheets (Async)
             fetch(SCRIPT_URL, { method: 'POST', body: formData })
                 .then(response => {
-                    console.log('Success!', response);
-                    // Open WhatsApp after recording the lead
-                    window.location.href = waUrl;
+                    showSuccess('booking');
                 })
                 .catch(error => {
-                    console.error('Error!', error.message);
-                    // Open WhatsApp anyway even if sheet fails, so you don't lose the customer
-                    window.location.href = waUrl;
+                    // Fallback to WhatsApp if script fails
+                    const text = `Hi Roam Kenya! 🦁 I'd like to book a safari:%0A%0A*Name:* ${name}%0A*Package:* ${packageValue}%0A*Date:* ${date}`;
+                    window.location.href = `https://wa.me/254722816001?text=${text}`;
                 });
         });
 
@@ -1059,27 +1073,25 @@
             const location = document.getElementById('driverLocation').value;
             const vehicle = document.getElementById('vehicleType').value;
             const phone = document.getElementById('driverPhone').value;
+            const timestamp = new Date().toLocaleString();
             
             // 1. Data for Google Sheets
             const formData = new FormData();
+            formData.append('Timestamp', timestamp);
             formData.append('Type', 'Driver Registration');
             formData.append('Name', name);
             formData.append('Location', location);
             formData.append('Vehicle', vehicle);
-            formData.append('Phone', phone);
-            formData.append('Timestamp', new Date().toLocaleString());
+            formData.append('Contact', phone);
+            formData.append('Status', 'Vetting Pending');
 
-            // 2. WhatsApp Notification to Admin
-            const text = `New Driver Partner Registration! 🚙%0A%0A*Name:* ${name}%0A*Location:* ${location}%0A*Vehicle:* ${vehicle}%0A*Phone:* ${phone}`;
-            const waUrl = `https://wa.me/254722816001?text=${text}`;
-            
             fetch(SCRIPT_URL, { method: 'POST', body: formData })
                 .then(response => {
-                    alert("Registration successful! We will contact you shortly for vetting.");
-                    window.location.href = waUrl;
+                    showSuccess('driver');
                 })
                 .catch(error => {
-                    window.location.href = waUrl;
+                    const text = `New Driver Partner! 🚙%0A%0A*Name:* ${name}%0A*Location:* ${location}%0A*Vehicle:* ${vehicle}%0A*Phone:* ${phone}`;
+                    window.location.href = `https://wa.me/254722816001?text=${text}`;
                 });
         });
     </script>
