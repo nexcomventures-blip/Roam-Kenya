@@ -3,321 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roam Kenya | The Art of Safari</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Roam Kenya Safaris | Explore the Extraordinary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #F9F7F2; /* Soft Linen */
-            --text: #1A1A1A; /* Carbon */
-            --accent: #8B7355; /* Safari Bronze */
+            --primary: #2D5A27; /* Jungle Green */
+            --secondary: #D68C45; /* Earthy Clay */
+            --bg: #FDFBFA; /* Warm White */
+            --text: #1F2937;
             --white: #FFFFFF;
-            --border: #E5E1D8;
+            --soft: #E5E7EB;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
         }
 
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        /* Minimal Header */
         header {
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: absolute;
-            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
             z-index: 1000;
+            border-bottom: 1px solid var(--soft);
         }
 
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text);
-            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: lowercase;
+            letter-spacing: -1px;
         }
 
-        nav {
-            display: flex;
-            gap: 40px;
-        }
+        .logo span { color: var(--secondary); }
 
+        nav { display: flex; gap: 30px; }
         nav a {
-            color: var(--text);
             text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            transition: opacity 0.3s;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
         }
+        nav a:hover { color: var(--primary); }
 
-        nav a:hover {
-            opacity: 0.5;
-        }
-
-        /* Hero - Cinematic & Elegant */
         .hero {
-            height: 100vh;
+            padding: 100px 5% 150px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 0 10%;
-            background: linear-gradient(rgba(249, 247, 242, 0.4), rgba(249, 247, 242, 0.4)), 
-                        url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+            justify-content: space-between;
+            gap: 50px;
         }
 
-        .hero h1 {
-            font-size: clamp(3.5rem, 8vw, 6rem);
+        .hero-text { flex: 1; }
+        .hero-text h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            line-height: 1;
+            font-weight: 800;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #4B5563;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-bottom: 3rem;
-            font-style: italic;
-            color: #555;
+        .hero-img {
+            flex: 1;
+            height: 600px;
+            background: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=1500') center/cover;
+            border-radius: 40px;
+            box-shadow: 20px 20px 0 var(--soft);
         }
 
         .btn {
             display: inline-block;
-            background: var(--text);
-            color: var(--white);
-            padding: 1rem 3rem;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
             text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            border: 1px solid var(--text);
-            transition: all 0.4s;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
-
         .btn:hover {
-            background: transparent;
-            color: var(--text);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(45, 90, 39, 0.2);
         }
+        .btn-secondary { background: var(--secondary); margin-left: 1rem; }
 
-        .btn-ghost {
-            background: transparent;
-            color: var(--text);
-            margin-left: 1rem;
-        }
-
-        /* Luxury Grid */
-        .container {
-            padding: 10rem 10%;
-        }
-
+        .container { padding: 100px 5%; }
         .section-title {
             text-align: center;
-            margin-bottom: 6rem;
+            margin-bottom: 70px;
         }
-
-        .section-title h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-title span {
-            font-size: 0.8rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 1rem;
-        }
+        .section-title h2 { font-size: 3rem; margin-bottom: 1rem; }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
-        .item {
-            position: relative;
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .card {
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid var(--soft);
+            transition: all 0.3s;
         }
-
-        .item:hover {
+        .card:hover {
+            border-color: var(--primary);
             transform: translateY(-10px);
         }
-
-        .item-img {
-            aspect-ratio: 4/5;
+        .card-img {
+            height: 300px;
             background-size: cover;
             background-position: center;
-            margin-bottom: 2rem;
-            filter: grayscale(20%);
         }
-
-        .item h3 {
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
+        .card-body { padding: 30px; }
+        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--soft);
         }
+        .price { font-weight: 800; color: var(--primary); font-size: 1.2rem; }
 
-        .item-meta {
-            font-size: 0.75rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .item p {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        /* Editorial Split Section */
         .split {
             display: flex;
-            background: var(--white);
+            gap: 50px;
             align-items: center;
+            background: #F3F4F6;
+            border-radius: 50px;
+            padding: 80px;
+            margin: 0 5%;
         }
-
-        .split-content {
-            flex: 1;
-            padding: 10%;
-        }
-
+        .split-text { flex: 1; }
         .split-img {
             flex: 1;
-            height: 800px;
-            background: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=1500') center/cover;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80&w=800') center/cover;
+            border-radius: 30px;
         }
 
-        /* Form Styling - Clean & Minimal */
-        .form-section {
+        .form-container {
             background: var(--white);
-            padding: 8rem 20%;
+            padding: 60px;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
         }
-
-        .form-group {
-            margin-bottom: 3rem;
-        }
-
-        input, select, textarea {
+        .form-group { margin-bottom: 25px; }
+        input, select {
             width: 100%;
-            border: none;
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 0;
-            font-size: 1.1rem;
-            background: transparent;
+            padding: 1.2rem;
+            border-radius: 15px;
+            border: 2px solid var(--soft);
+            font-size: 1rem;
             outline: none;
             transition: border-color 0.3s;
         }
-
-        input:focus {
-            border-color: var(--accent);
-        }
-
-        label {
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        /* Quote Section */
-        .quote {
-            padding: 8rem 10%;
-            text-align: center;
-            background: var(--bg);
-        }
-
-        .quote p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-style: italic;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Ticker - Sophisticated */
-        .ticker {
-            background: var(--text);
-            color: var(--bg);
-            padding: 1.5rem 0;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .ticker-wrap {
-            display: inline-block;
-            animation: scroll 40s linear infinite;
-        }
-
-        .ticker-item {
-            display: inline-block;
-            padding: 0 4rem;
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-        }
-
-        @keyframes scroll {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
+        input:focus { border-color: var(--primary); }
+        label { display: block; margin-bottom: 10px; font-weight: 700; color: #374151; font-size: 0.9rem; }
 
         footer {
-            padding: 8rem 10% 4rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
+            background: var(--text);
+            color: white;
+            padding: 100px 5% 50px;
+            margin-top: 100px;
+            border-radius: 50px 50px 0 0;
         }
-
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            display: block;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
         }
-
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 4rem;
-        }
-
-        .socials a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
+        .footer-col h4 { margin-bottom: 25px; color: var(--secondary); }
+        .footer-col a { display: block; color: #9CA3AF; text-decoration: none; margin-bottom: 15px; transition: color 0.3s; }
+        .footer-col a:hover { color: white; }
 
         @media (max-width: 1024px) {
-            .grid { grid-template-columns: 1fr; gap: 6rem; }
-            .split { flex-direction: column; }
-            .hero h1 { font-size: 4rem; }
+            .hero, .split { flex-direction: column; text-align: center; }
+            .hero-img { height: 400px; width: 100%; }
+            .split-img { display: none; }
             nav { display: none; }
         }
     </style>
@@ -325,173 +217,161 @@
 <body>
 
     <header>
-        <a href="#" class="logo">Roam Kenya</a>
+        <div class="logo">roam<span>kenya</span></div>
         <nav>
-            <a href="#safaris">The Safaris</a>
-            <a href="#logistics">Services</a>
-            <a href="#booking">Reserve</a>
-            <a href="#drivers">Partners</a>
+            <a href="#safaris">Safaris</a>
+            <a href="#services">Services</a>
+            <a href="#drivers">Join Fleet</a>
+            <a href="#booking">Book Now</a>
         </nav>
+        <a href="#booking" class="btn">Get Started</a>
     </header>
 
     <section class="hero">
-        <p>Est. 2026 — Nairobi, Kenya</p>
-        <h1>Adventures Crafted <br> with Intent.</h1>
-        <p>Bespoke safari experiences for the modern explorer. From the heart of the savanna to the shores of the Indian Ocean.</p>
-        <div>
-            <a href="#safaris" class="btn">Explore Collections</a>
+        <div class="hero-text">
+            <h1>Africa is calling, <br> are you ready?</h1>
+            <p>Experience the magic of Kenya with curated safari packages that blend luxury, adventure, and local soul.</p>
+            <a href="#safaris" class="btn">Explore Safaris</a>
+            <a href="https://wa.me/254722816001" class="btn btn-secondary">WhatsApp Us</a>
         </div>
+        <div class="hero-img"></div>
     </section>
 
-    <div class="ticker">
-        <div class="ticker-wrap">
-            <span class="ticker-item">Maasai Mara Exclusive</span>
-            <span class="ticker-item">Diani Beach Retreat</span>
-            <span class="ticker-item">Amboseli Wildlife Path</span>
-            <span class="ticker-item">Mt. Kenya Expeditions</span>
-            <span class="ticker-item">Maasai Mara Exclusive</span>
-            <span class="ticker-item">Diani Beach Retreat</span>
-            <span class="ticker-item">Amboseli Wildlife Path</span>
-            <span class="ticker-item">Mt. Kenya Expeditions</span>
-        </div>
-    </div>
-
-    <!-- The Collection -->
-    <div class="container" id="safaris">
+    <section class="container" id="safaris">
         <div class="section-title">
-            <span>The Collection</span>
-            <h2>Wilderness Rediscovered</h2>
+            <h2>Popular Journeys</h2>
+            <p>Our handpicked adventures for 2026.</p>
         </div>
-        
         <div class="grid">
-            <!-- Item 1 -->
-            <div class="item">
-                <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80&w=800')"></div>
-                <span class="item-meta">Maasai Mara — 3 Days</span>
-                <h3>The Great Migration</h3>
-                <p>Witness nature's greatest spectacle with private guides and luxury bush camps.</p>
-                <div style="font-size: 0.9rem; margin-bottom: 2rem;">Starts at KES 65,000 / $450</div>
-                <a href="https://wa.me/254722816001?text=Inquiry: Maasai Mara" class="btn">Inquire</a>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80&w=800')"></div>
+                <div class="card-body">
+                    <h3>Maasai Mara Magic</h3>
+                    <p>The ultimate big five experience in Kenya's most iconic reserve.</p>
+                    <div class="card-info">
+                        <div class="price">KES 65,000<span> / $450</span></div>
+                        <a href="#booking" class="btn" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;">Select</a>
+                    </div>
+                </div>
             </div>
-
-            <!-- Item 2 -->
-            <div class="item">
-                <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1589982427847-cf46eebb08c1?auto=format&fit=crop&q=80&w=800')"></div>
-                <span class="item-meta">Diani — 4 Days</span>
-                <h3>The Coastal Serenity</h3>
-                <p>Turquoise waters and white sands. A curated escape to Kenya's most beautiful beach.</p>
-                <div style="font-size: 0.9rem; margin-bottom: 2rem;">Starts at KES 55,000 / $400</div>
-                <a href="https://wa.me/254722816001?text=Inquiry: Diani" class="btn">Inquire</a>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1589982427847-cf46eebb08c1?auto=format&fit=crop&q=80&w=800')"></div>
+                <div class="card-body">
+                    <h3>Diani Beach Escape</h3>
+                    <p>Relaxation on the world's best beach with turquoise waters.</p>
+                    <div class="card-info">
+                        <div class="price">KES 55,000<span> / $400</span></div>
+                        <a href="#booking" class="btn" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;">Select</a>
+                    </div>
+                </div>
             </div>
-
-            <!-- Item 3 -->
-            <div class="item">
-                <div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=800')"></div>
-                <span class="item-meta">Amboseli — 2 Days</span>
-                <h3>Under the Kilimanjaro</h3>
-                <p>Elephant herds roaming beneath the iconic snow-capped peak of Africa.</p>
-                <div style="font-size: 0.9rem; margin-bottom: 2rem;">Starts at KES 42,000 / $350</div>
-                <a href="https://wa.me/254722816001?text=Inquiry: Amboseli" class="btn">Inquire</a>
+            <div class="card">
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=800')"></div>
+                <div class="card-body">
+                    <h3>Amboseli Path</h3>
+                    <p>Majestic elephants and views of the Kilimanjaro peak.</p>
+                    <div class="card-info">
+                        <div class="price">KES 42,000<span> / $350</span></div>
+                        <a href="#booking" class="btn" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;">Select</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Editorial Split -->
-    <section class="split" id="logistics">
-        <div class="split-img"></div>
-        <div class="split-content">
-            <div class="section-title" style="text-align: left;">
-                <span>The Ecosystem</span>
-                <h2>Seamless Logistics</h2>
-            </div>
-            <p style="margin-bottom: 3rem;">We don't just book trips; we manage the entire ecosystem of your adventure. From luxury hotel curation to private airport transfers and domestic flight logistics.</p>
-            <div style="margin-bottom: 2rem;">
-                <h3>Private Transfers</h3>
-                <p style="font-size: 0.9rem;">24/7 Professional pickups in Nairobi & Mombasa.</p>
-            </div>
-            <div style="margin-bottom: 2rem;">
-                <h3>Flight Concierge</h3>
-                <p style="font-size: 0.9rem;">Domestic bush flights and international ticketing.</p>
-            </div>
-            <a href="https://wa.me/254722816001?text=I need logistics help" class="btn">Speak to Concierge</a>
         </div>
     </section>
 
-    <!-- Reservation -->
-    <section class="form-section" id="booking">
-        <div class="section-title">
-            <span>The Reservation</span>
-            <h2>Plan Your Journey</h2>
+    <div class="split" id="services">
+        <div class="split-text">
+            <h2>The Full Ecosystem</h2>
+            <p style="margin: 20px 0 40px;">We handle everything from airport pickups to domestic flight logistics and luxury lodge bookings.</p>
+            <ul style="list-style: none; margin-bottom: 40px;">
+                <li style="margin-bottom: 15px;">✅ 24/7 Professional Transfers</li>
+                <li style="margin-bottom: 15px;">✅ Domestic Flight Ticketing</li>
+                <li style="margin-bottom: 15px;">✅ Luxury Lodge Concierge</li>
+            </ul>
+            <a href="https://wa.me/254722816001" class="btn">Learn More</a>
         </div>
-        <div id="bookingFormContainer">
+        <div class="split-img"></div>
+    </div>
+
+    <section class="container" id="booking">
+        <div class="section-title">
+            <h2>Start Your Journey</h2>
+            <p>Fill out the form and we'll handle the rest.</p>
+        </div>
+        <div class="form-container" id="bookingFormContainer">
             <form id="bookingForm">
                 <div class="form-group">
-                    <label>Your Name</label>
+                    <label>Full Name</label>
                     <input type="text" id="name" required placeholder="Dickson Muchemi">
                 </div>
                 <div class="form-group">
-                    <label>Interested Collection</label>
+                    <label>Preferred Safari</label>
                     <select id="package" required>
-                        <option value="">Select Safari</option>
-                        <option value="Maasai Mara">Maasai Mara</option>
-                        <option value="Diani Escape">Diani Escape</option>
-                        <option value="Amboseli">Amboseli</option>
-                        <option value="Custom">Custom Curation</option>
+                        <option value="">Select Package</option>
+                        <option value="Maasai Mara">Maasai Mara Magic</option>
+                        <option value="Diani Escape">Diani Beach Escape</option>
+                        <option value="Amboseli">Amboseli Path</option>
+                        <option value="Custom">Custom Adventure</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Travel Date</label>
                     <input type="date" id="date" required>
                 </div>
-                <button type="submit" id="submitBtn" class="btn" style="width: 100%;">Submit Request</button>
+                <button type="submit" id="submitBtn" class="btn" style="width: 100%;">Book My Safari</button>
             </form>
         </div>
     </section>
 
-    <!-- Driver Partners -->
-    <section class="form-section" id="drivers" style="background: #F0EDE5;">
+    <section class="container" id="drivers" style="background: #FFFBEB; border-radius: 50px; margin: 0 5%;">
         <div class="section-title">
-            <span>Partnership</span>
-            <h2>The Fleet Program</h2>
+            <h2>Partner With Us</h2>
+            <p>Do you own a Land Cruiser or Tour Van? Join our fleet.</p>
         </div>
-        <p style="text-align: center; margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto;">We are seeking professional owners of Land Cruisers and Tour Vans to join our curated network.</p>
-        <div id="driverFormContainer">
+        <div class="form-container" id="driverFormContainer">
             <form id="driverForm">
                 <div class="form-group">
-                    <label>Full Name</label>
+                    <label>Your Name</label>
                     <input type="text" id="driverName" required>
                 </div>
                 <div class="form-group">
-                    <label>WhatsApp Contact</label>
+                    <label>Phone / WhatsApp</label>
                     <input type="text" id="driverPhone" required>
                 </div>
                 <div class="form-group">
-                    <label>Vehicle Type</label>
+                    <label>Vehicle Model</label>
                     <select id="vehicleType" required>
                         <option value="Land Cruiser">Land Cruiser (4x4)</option>
                         <option value="Tour Van">Tour Van</option>
-                        <option value="Other">Other Luxury Vehicle</option>
+                        <option value="Other">Luxury Vehicle</option>
                     </select>
                 </div>
-                <button type="submit" id="driverSubmitBtn" class="btn" style="width: 100%;">Join The Fleet</button>
+                <button type="submit" id="driverSubmitBtn" class="btn btn-secondary" style="width: 100%; margin-left: 0;">Apply to Fleet</button>
             </form>
         </div>
     </section>
 
-    <section class="quote">
-        <p>"To Roam is to live. Roam Kenya made our safari feel like a private art exhibition in the wild."</p>
-        <div style="margin-top: 2rem; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;">— Private Client, London</div>
-    </section>
-
     <footer>
-        <span class="footer-logo">Roam Kenya</span>
-        <div class="socials">
-            <a href="#">Instagram</a>
-            <a href="#">LinkedIn</a>
-            <a href="https://wa.me/254722816001">WhatsApp</a>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 20px;">roam<span>kenya</span></div>
+                <p>Authentic Kenyan experiences curated for you.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="#safaris">Safaris</a>
+                <a href="#services">Services</a>
+                <a href="#booking">Book Now</a>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="https://wa.me/254722816001">WhatsApp</a>
+                <a href="mailto:info@roamkenya.com">Email Us</a>
+                <a href="#drivers">Join Fleet</a>
+            </div>
         </div>
-        <div style="font-size: 0.7rem; letter-spacing: 0.1em; color: #999; text-transform: uppercase;">
-            © 2026 Roam Kenya Safaris • By Dickson Muchemi
+        <div style="text-align: center; border-top: 1px solid #374151; padding-top: 30px; font-size: 0.8rem; color: #6B7280;">
+            © 2026 Roam Kenya Safaris • Created by Dickson Muchemi
         </div>
     </footer>
 
@@ -501,10 +381,11 @@
         function showSuccess(containerId, message) {
             const container = document.getElementById(containerId);
             container.innerHTML = `
-                <div style="text-align: center; padding: 4rem 0;">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Received.</h2>
-                    <p style="font-style: italic; color: #666; margin-bottom: 3rem;">${message}</p>
-                    <button onclick="location.reload()" class="btn btn-ghost">Return</button>
+                <div style="text-align: center; padding: 40px;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+                    <h2 style="margin-bottom: 10px;">Success!</h2>
+                    <p style="color: #6B7280; margin-bottom: 30px;">${message}</p>
+                    <button onclick="location.reload()" class="btn">Finish</button>
                 </div>
             `;
         }
@@ -515,22 +396,17 @@
             btn.innerText = "Processing...";
             btn.disabled = true;
 
-            const name = document.getElementById('name').value;
-            const pkg = document.getElementById('package').value;
-            const date = document.getElementById('date').value;
-
             const formData = new FormData();
             formData.append('Timestamp', new Date().toLocaleString());
             formData.append('Type', 'Booking');
-            formData.append('Name', name);
-            formData.append('Package', pkg);
-            formData.append('Date', date);
-            formData.append('Status', 'New');
+            formData.append('Name', document.getElementById('name').value);
+            formData.append('Package', document.getElementById('package').value);
+            formData.append('Date', document.getElementById('date').value);
 
             fetch(SCRIPT_URL, { method: 'POST', body: formData })
-                .then(() => showSuccess('bookingFormContainer', "Your journey request has been recorded. Our concierge will contact you shortly."))
+                .then(() => showSuccess('bookingFormContainer', "Journey request received. We'll contact you soon!"))
                 .catch(() => {
-                    const text = `Hi Roam Kenya! 🦁 I want to book: ${pkg} on ${date}. Name: ${name}`;
+                    const text = `Hi Roam Kenya! I want to book: ${document.getElementById('package').value}`;
                     window.location.href = `https://wa.me/254722816001?text=${encodeURIComponent(text)}`;
                 });
         });
@@ -538,25 +414,20 @@
         document.getElementById('driverForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('driverSubmitBtn');
-            btn.innerText = "Submitting...";
+            btn.innerText = "Applying...";
             btn.disabled = true;
-
-            const name = document.getElementById('driverName').value;
-            const phone = document.getElementById('driverPhone').value;
-            const vehicle = document.getElementById('vehicleType').value;
 
             const formData = new FormData();
             formData.append('Timestamp', new Date().toLocaleString());
             formData.append('Type', 'Driver');
-            formData.append('Name', name);
-            formData.append('Contact', phone);
-            formData.append('Vehicle', vehicle);
-            formData.append('Status', 'Pending');
+            formData.append('Name', document.getElementById('driverName').value);
+            formData.append('Contact', document.getElementById('driverPhone').value);
+            formData.append('Vehicle', document.getElementById('vehicleType').value);
 
             fetch(SCRIPT_URL, { method: 'POST', body: formData })
-                .then(() => showSuccess('driverFormContainer', "Partnership application received. We will review and reach out."))
+                .then(() => showSuccess('driverFormContainer', "Fleet application submitted. We'll be in touch!"))
                 .catch(() => {
-                    const text = `New Driver Partner: ${name}, Phone: ${phone}, Vehicle: ${vehicle}`;
+                    const text = `New Fleet Partner: ${document.getElementById('driverName').value}`;
                     window.location.href = `https://wa.me/254722816001?text=${encodeURIComponent(text)}`;
                 });
         });
