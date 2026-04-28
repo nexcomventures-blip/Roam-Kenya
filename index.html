@@ -440,6 +440,10 @@
                     <input type="text" id="name" required placeholder="Dickson Muchemi">
                 </div>
                 <div class="form-group">
+                    <label>Contact (Email or WhatsApp)</label>
+                    <input type="text" id="contact" required placeholder="email@example.com or +254...">
+                </div>
+                <div class="form-group">
                     <label>Interested Collection</label>
                     <select id="package" required>
                         <option value="">Select Safari</option>
@@ -528,6 +532,7 @@
             btn.disabled = true;
 
             const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
             const pkg = document.getElementById('package').value;
             const date = document.getElementById('date').value;
 
@@ -535,15 +540,22 @@
             formData.append('Timestamp', new Date().toLocaleString());
             formData.append('Type', 'Booking');
             formData.append('Name', name);
-            formData.append('Package', pkg);
-            formData.append('Date', date);
+            formData.append('Contact', contact);
+            formData.append('Vehicle/Package', pkg);
+            formData.append('Notes', `Travel Date: ${date}`);
             formData.append('Status', 'New');
 
             fetch(SCRIPT_URL, { method: 'POST', body: formData })
                 .then(() => showSuccess('bookingFormContainer', "Your journey request has been recorded. Our concierge will contact you shortly."))
                 .catch(() => {
-                    const text = `Hi Roam Kenya! 🦁 I want to book: ${pkg} on ${date}. Name: ${name}`;
-                    window.location.href = `https://wa.me/254722816001?text=${encodeURIComponent(text)}`;
+                    showSuccess('bookingFormContainer', "There was a slight delay, but we've prepared your inquiry. Click below to finish on WhatsApp.");
+                    const retryBtn = document.createElement('a');
+                    retryBtn.href = `https://wa.me/254722816001?text=${encodeURIComponent(`Hi Roam Kenya! 🦁 I'm ${name}. I want to book ${pkg} for ${date}.`)}`;
+                    retryBtn.className = 'btn';
+                    retryBtn.innerText = 'Complete on WhatsApp';
+                    retryBtn.style.marginTop = '1rem';
+                    retryBtn.style.display = 'inline-block';
+                    document.getElementById('bookingFormContainer').appendChild(retryBtn);
                 });
         });
 
@@ -568,8 +580,14 @@
             fetch(SCRIPT_URL, { method: 'POST', body: formData })
                 .then(() => showSuccess('driverFormContainer', "Partnership application received. We will review and reach out."))
                 .catch(() => {
-                    const text = `New Driver Partner: ${name}, Phone: ${phone}, Vehicle: ${vehicle}`;
-                    window.location.href = `https://wa.me/254722816001?text=${encodeURIComponent(text)}`;
+                    showSuccess('driverFormContainer', "The database is busy, but we're ready for you. Contact us on WhatsApp instead.");
+                    const retryBtn = document.createElement('a');
+                    retryBtn.href = `https://wa.me/254722816001?text=${encodeURIComponent(`Hi Roam Kenya! I'm interested in joining the fleet. Name: ${name}, Vehicle: ${vehicle}`)}`;
+                    retryBtn.className = 'btn';
+                    retryBtn.innerText = 'Apply via WhatsApp';
+                    retryBtn.style.marginTop = '1rem';
+                    retryBtn.style.display = 'inline-block';
+                    document.getElementById('driverFormContainer').appendChild(retryBtn);
                 });
         });
     </script>
