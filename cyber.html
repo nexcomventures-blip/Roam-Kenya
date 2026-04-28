@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROAM KENYA | Savage Safaris & Urban Vibes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #121212;
+            --primary: #CCFF00; /* Cyber Lime */
+            --secondary: #FF3E00; /* Vivid Orange */
+            --accent: #7000FF; /* Electric Purple */
+            --text: #FFFFFF;
+            --text-dim: #A0A0A0;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* Nav Bar - Floating Glass */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero - Immersive & Bold */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg)), 
+                        url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+        }
+
+        .hero-tag {
+            background: var(--primary);
+            color: black;
+            padding: 4px 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Buttons - High Contrast */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: black;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+            border-radius: 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0px var(--secondary);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--text);
+            box-shadow: none;
+        }
+
+        /* Section Styling */
+        .container {
+            padding: 8rem 10%;
+        }
+
+        .section-header {
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        /* Cards - Neo-Brutalist */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: scale(1.02);
+        }
+
+        .card-img {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: black;
+            padding: 5px 15px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-price {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .price-box {
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            font-size: 0.8rem;
+        }
+
+        .price-box span {
+            display: block;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Logistics Section */
+        #logistics {
+            background: white;
+            color: black;
+        }
+
+        #logistics .section-header h2, #logistics p {
+            color: black;
+        }
+
+        #logistics .card {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+        }
+
+        #logistics .card h3 {
+            color: black;
+        }
+
+        #logistics .btn {
+            background: black;
+            color: white;
+        }
+
+        #logistics .btn:hover {
+            box-shadow: 8px 8px 0px var(--accent);
+        }
+
+        /* Database Form Area */
+        .form-container {
+            background: var(--surface);
+            padding: 4rem;
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--border);
+            padding: 1rem 0;
+            color: white;
+            font-size: 1.2rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        label {
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+        }
+
+        /* Reviews Ticker */
+        .ticker {
+            padding: 2rem 0;
+            background: var(--primary);
+            color: black;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: flex;
+        }
+
+        .ticker-inner {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Footer */
+        footer {
+            padding: 5rem 10% 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .footer-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-link:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 0 5%; }
+            .hero h1 { font-size: 4rem; }
+            .grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ROAM KENYA</div>
+        <nav>
+            <a href="#safaris">SAFARIS</a>
+            <a href="#logistics">LOGISTICS</a>
+            <a href="#drivers">DRIVERS</a>
+            <a href="#booking">BOOK</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-tag">TRENDING: MAASAI MARA 🦁</div>
+        <h1>NOT YOUR<br>AVERAGE<br>SAFARI.</h1>
+        <p>Premium wild experiences curated for the next generation of explorers.</p>
+        <div style="display: flex; gap: 20px;">
+            <a href="#safaris" class="btn">EXPLORE</a>
+            <a href="#booking" class="btn btn-outline">RESERVE</a>
+        </div>
+    </section>
+
+    <div class="ticker">
+        <div class="ticker-inner">
+            ELEPHANT SPOTTING IN AMBOSELI • SUNSET DHOW IN DIANI • LUXURY BUSH VIBES • WILDLIFE VLOGS • BEST OF KENYA • ROAM THE WILD • 
+            ELEPHANT SPOTTING IN AMBOSELI • SUNSET DHOW IN DIANI • LUXURY BUSH VIBES • WILDLIFE VLOGS • BEST OF KENYA • ROAM THE WILD • 
+        </div>
+    </div>
+
+    <!-- Safari Packages -->
+    <div class="container" id="safaris">
+        <div class="section-header">
+            <h2>WILD DROPS</h2>
+            <p>Our most requested adventure packages.</p>
+        </div>
+        
+        <div class="grid">
+            <!-- Package 1 -->
+            <div class="card">
+                <div class="card-tag">BESTSELLER</div>
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80&w=800')"></div>
+                <div class="card-content">
+                    <h3>MAASAI MARA EXCLUSIVE</h3>
+                    <div class="card-price">
+                        <div class="price-box">KE RESIDENTS <span>KES 65K</span></div>
+                        <div class="price-box">INTERNATIONAL <span>$450</span></div>
+                    </div>
+                    <a href="https://wa.me/254722816001?text=Booking: Maasai Mara Exclusive" class="btn" style="width: 100%;">SEND IT</a>
+                </div>
+            </div>
+
+            <!-- Package 2 -->
+            <div class="card">
+                <div class="card-tag">COASTAL</div>
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1589982427847-cf46eebb08c1?auto=format&fit=crop&q=80&w=800')"></div>
+                <div class="card-content">
+                    <h3>DIANI BEACH ESCAPE</h3>
+                    <div class="card-price">
+                        <div class="price-box">KE RESIDENTS <span>KES 55K</span></div>
+                        <div class="price-box">INTERNATIONAL <span>$400</span></div>
+                    </div>
+                    <a href="https://wa.me/254722816001?text=Booking: Diani Escape" class="btn" style="width: 100%;">SEND IT</a>
+                </div>
+            </div>
+
+            <!-- Package 3 -->
+            <div class="card">
+                <div class="card-tag">ADVENTURE</div>
+                <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1520114878144-6123749968dd?auto=format&fit=crop&q=80&w=800')"></div>
+                <div class="card-content">
+                    <h3>MT. KENYA TREK</h3>
+                    <div class="card-price">
+                        <div class="price-box">KE RESIDENTS <span>KES 48K</span></div>
+                        <div class="price-box">INTERNATIONAL <span>$380</span></div>
+                    </div>
+                    <a href="https://wa.me/254722816001?text=Booking: Mt Kenya Trek" class="btn" style="width: 100%;">SEND IT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logistics -->
+    <section id="logistics">
+        <div class="container">
+            <div class="section-header">
+                <h2>THE ECOSYSTEM</h2>
+                <p>Everything else you need for a smooth trip.</p>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>HOTEL PLUG</h3>
+                        <p style="margin-bottom: 2rem; color: #555;">We have the best rates at all major lodges and city hotels.</p>
+                        <a href="https://wa.me/254722816001?text=Hotel Inquire" class="btn">INQUIRE</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>TRANSFERS</h3>
+                        <p style="margin-bottom: 2rem; color: #555;">Professional airport pickups in Nairobi & Mombasa. 24/7.</p>
+                        <a href="https://wa.me/254722816001?text=Transfer Booking" class="btn">BOOK CAR</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>FLIGHTS</h3>
+                        <p style="margin-bottom: 2rem; color: #555;">Internal bush flights and international ticketing.</p>
+                        <a href="https://wa.me/254722816001?text=Flight Search" class="btn">SEARCH</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <div class="container" id="booking">
+        <div class="section-header">
+            <h2>RESERVE YOUR VIBE</h2>
+            <p>Ready to roam? Fill this out and we'll handle the rest.</p>
+        </div>
+
+        <div class="form-container" id="bookingFormContainer">
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" required placeholder="Who's roaming?">
+                </div>
+                <div class="form-group">
+                    <label>Pick Your Safari</label>
+                    <select id="package" required>
+                        <option value="">Select a Drop</option>
+                        <option value="Maasai Mara">Maasai Mara Exclusive</option>
+                        <option value="Diani Escape">Diani Beach Escape</option>
+                        <option value="Mt Kenya">Mt. Kenya Trek</option>
+                        <option value="Custom">Custom Adventure</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Travel Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" id="submitBtn" class="btn" style="width: 100%;">LOCK IT IN</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Drivers -->
+    <div class="container" id="drivers" style="background: var(--accent);">
+        <div class="section-header">
+            <h2 style="color: white;">JOIN THE FLEET</h2>
+            <p style="color: white; opacity: 0.8;">Own a Land Cruiser or Tour Van? Partner with the wild.</p>
+        </div>
+        <div class="form-container" id="driverFormContainer" style="background: rgba(0,0,0,0.3);">
+            <form id="driverForm">
+                <div class="form-group">
+                    <label style="color: white;">Name</label>
+                    <input type="text" id="driverName" required>
+                </div>
+                <div class="form-group">
+                    <label style="color: white;">Phone / WhatsApp</label>
+                    <input type="text" id="driverPhone" required>
+                </div>
+                <div class="form-group">
+                    <label style="color: white;">Vehicle Type</label>
+                    <select id="vehicleType" required style="border-bottom: 2px solid white;">
+                        <option value="Land Cruiser">Land Cruiser (4x4)</option>
+                        <option value="Van">Tour Van</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" id="driverSubmitBtn" class="btn" style="background: white; color: black; width: 100%;">APPLY NOW</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="margin-bottom: 2rem;">ROAM KENYA</div>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">Savage Safaris & Urban Vibes. Premium Kenyan experiences for the modern explorer.</p>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem; font-size: 0.8rem; letter-spacing: 2px;">NAVIGATION</h4>
+                <a href="#safaris" class="footer-link">Wild Drops</a>
+                <a href="#logistics" class="footer-link">The Ecosystem</a>
+                <a href="#drivers" class="footer-link">Fleet Partners</a>
+            </div>
+            <div>
+                <h4 style="margin-bottom: 1.5rem; font-size: 0.8rem; letter-spacing: 2px;">SOCIAL</h4>
+                <a href="#" class="footer-link">Instagram</a>
+                <a href="#" class="footer-link">TikTok</a>
+                <a href="https://wa.me/254722816001" class="footer-link">WhatsApp</a>
+            </div>
+        </div>
+        <div style="text-align: center; color: var(--text-dim); font-size: 0.7rem; letter-spacing: 1px;">
+            © 2026 ROAM KENYA SAFARIS. BY DICKSON MUCHEMI.
+        </div>
+    </footer>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_YOUR_SCRIPT_ID/exec';
+
+        function showSuccess(containerId, message) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `
+                <div style="text-align: center; padding: 4rem 2rem;">
+                    <div style="font-size: 5rem; margin-bottom: 2rem;">🔥</div>
+                    <h2 style="font-size: 3rem; margin-bottom: 1rem;">LEGENDARY!</h2>
+                    <p style="font-size: 1.2rem; color: var(--text-dim); margin-bottom: 3rem;">${message}</p>
+                    <button onclick="location.reload()" class="btn">GO BACK</button>
+                </div>
+            `;
+        }
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerText = "PROCESSING...";
+            submitBtn.disabled = true;
+
+            const name = document.getElementById('name').value;
+            const packageVal = document.getElementById('package').value;
+            const date = document.getElementById('date').value;
+
+            const formData = new FormData();
+            formData.append('Timestamp', new Date().toLocaleString());
+            formData.append('Type', 'Booking');
+            formData.append('Name', name);
+            formData.append('Package', packageVal);
+            formData.append('Date', date);
+            formData.append('Status', 'New');
+
+            fetch(SCRIPT_URL, { method: 'POST', body: formData })
+                .then(() => showSuccess('bookingFormContainer', "We've got your booking. Checking availability now."))
+                .catch(() => {
+                    const text = `Hi Roam Kenya! 🦁 I want to book: ${packageVal} on ${date}. Name: ${name}`;
+                    window.location.href = `https://wa.me/254722816001?text=${encodeURIComponent(text)}`;
+                });
+        });
+
+        document.getElementById('driverForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('driverSubmitBtn');
+            submitBtn.innerText = "APPLYING...";
+            submitBtn.disabled = true;
+
+            const name = document.getElementById('driverName').value;
+            const phone = document.getElementById('driverPhone').value;
+            const vehicle = document.getElementById('vehicleType').value;
+
+            const formData = new FormData();
+            formData.append('Timestamp', new Date().toLocaleString());
+            formData.append('Type', 'Driver');
+            formData.append('Name', name);
+            formData.append('Contact', phone);
+            formData.append('Vehicle', vehicle);
+            formData.append('Status', 'Pending');
+
+            fetch(SCRIPT_URL, { method: 'POST', body: formData })
+                .then(() => showSuccess('driverFormContainer', "Application received! We'll reach out for vetting."))
+                .catch(() => {
+                    const text = `New Driver Partner: ${name}, Phone: ${phone}, Vehicle: ${vehicle}`;
+                    window.location.href = `https://wa.me/254722816001?text=${encodeURIComponent(text)}`;
+                });
+        });
+    </script>
+</body>
+</html>
