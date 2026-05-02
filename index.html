@@ -22,10 +22,17 @@
             padding: 2px 8px;
             border: 1px solid var(--border);
             border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-switch a:hover {
+            border-color: var(--primary);
+            color: var(--primary);
         }
         .lang-switch a.active {
             color: var(--primary);
             border-color: var(--primary);
+            background: rgba(194, 157, 89, 0.1);
         }
         .package-category {
             grid-column: 1 / -1;
@@ -48,119 +55,119 @@
                 <div style="background: var(--gradient); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--bg); font-weight: 800; font-size: 1.2rem; transform: rotate(-5deg); box-shadow: 0 4px 15px rgba(194, 157, 89, 0.3);">R</div>
                 <div style="line-height: 1.1;">
                     <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: -0.5px; color: var(--text);">ROAM <span style="color: var(--primary);">KENYA</span></span>
-                    <span style="display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3.5px; color: var(--gray); font-weight: 500; margin-top: 2px;">Tours & Safaris</span>
+                    <span style="display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3.5px; color: var(--gray); font-weight: 500; margin-top: 2px;" data-i18n="nav-subtitle">Tours & Safaris</span>
                 </div>
             </div>
         </a>
         <div class="nav-links">
-            <a href="#safaris">Safaris</a>
-            <a href="#logistics">Logistics</a>
-            <a href="#fleet">Join Fleet</a>
-            <a href="#contact">Contact</a>
+            <a href="#safaris" data-i18n="nav-safaris">Safaris</a>
+            <a href="#logistics" data-i18n="nav-logistics">Logistics</a>
+            <a href="#fleet" data-i18n="nav-fleet">Join Fleet</a>
+            <a href="#contact" data-i18n="nav-contact">Contact</a>
         </div>
         <div style="display: flex; flex-direction: column; align-items: flex-end;">
-            <div class="lang-switch">
-                <a href="#" class="active">EN</a>
-                <a href="#">中文</a>
-                <a href="#">ES</a>
-                <a href="#">FR</a>
-                <a href="#">DE</a>
+            <div class="lang-switch" id="lang-switcher">
+                <a onclick="setLanguage('en')" class="active" id="lang-en">EN</a>
+                <a onclick="setLanguage('zh')" id="lang-zh">中文</a>
+                <a onclick="setLanguage('es')" id="lang-es">ES</a>
+                <a onclick="setLanguage('fr')" id="lang-fr">FR</a>
+                <a onclick="setLanguage('de')" id="lang-de">DE</a>
             </div>
-            <a href="https://wa.me/254722816001" class="btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;">Multilingual Concierge</a>
+            <a href="https://wa.me/254722816001" class="btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.8rem;" data-i18n="nav-concierge">Multilingual Concierge</a>
         </div>
     </nav>
 
     <section id="hero">
         <div class="hero-content">
-            <div class="hero-tag">Est. 2026 — Nairobi, Kenya</div>
-            <h1>Experiences Tailored <br><span>for Every Soul.</span></h1>
-            <p>From romantic honeymoon escapes to educational student journeys. We curate the perfect Kenya for you.</p>
+            <div class="hero-tag" data-i18n="hero-tag">Est. 2026 — Nairobi, Kenya</div>
+            <h1 data-i18n="hero-title">Experiences Tailored <br><span>for Every Soul.</span></h1>
+            <p data-i18n="hero-p">From romantic honeymoon escapes to educational student journeys. We curate the perfect Kenya for you.</p>
             <div class="hero-btns">
-                <a href="#safaris" class="btn-primary">Explore All Packages</a>
-                <a href="#contact" class="btn-secondary">Request Custom Quote</a>
+                <a href="#safaris" class="btn-primary" data-i18n="hero-btn-1">Explore All Packages</a>
+                <a href="#contact" class="btn-secondary" data-i18n="hero-btn-2">Request Custom Quote</a>
             </div>
         </div>
     </section>
 
     <section id="safaris">
         <div class="section-header">
-            <div class="hero-tag">Curated Collections</div>
-            <h2>Find Your Perfect Journey</h2>
+            <div class="hero-tag" data-i18n="safaris-tag">Curated Collections</div>
+            <h2 data-i18n="safaris-title">Find Your Perfect Journey</h2>
         </div>
         <div class="grid">
 
             <!-- CATEGORY: ROMANCE & HONEYMOON -->
-            <div class="package-category">Romance & Honeymoon</div>
+            <div class="package-category" data-i18n="cat-romance">Romance & Honeymoon</div>
             
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1000&auto=format&fit=crop" alt="Honeymoon" class="card-img">
                 <div class="card-content">
-                    <div class="card-tag">Honeymoon Suite — Pure Luxury</div>
-                    <h3>The Savannah Romance</h3>
-                    <p>Private bush dinners, luxury tented suites, and sunrise hot air balloon rides. A dream start to forever.</p>
-                    <div class="card-price">Tailored Inclusions</div>
-                    <a href="https://wa.me/254722816001?text=Inquiry: Honeymoon Package" class="btn-primary" style="display: block; text-align: center;">Inquire Romance</a>
+                    <div class="card-tag" data-i18n="pkg1-tag">Honeymoon Suite — Pure Luxury</div>
+                    <h3 data-i18n="pkg1-title">The Savannah Romance</h3>
+                    <p data-i18n="pkg1-p">Private bush dinners, luxury tented suites, and sunrise hot air balloon rides. A dream start to forever.</p>
+                    <div class="card-price" data-i18n="pkg1-price">Tailored Inclusions</div>
+                    <a href="https://wa.me/254722816001?text=Inquiry: Honeymoon Package" class="btn-primary" style="display: block; text-align: center;" data-i18n="pkg-btn">Inquire Romance</a>
                 </div>
             </div>
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1000&auto=format&fit=crop" alt="Couple" class="card-img">
                 <div class="card-content">
-                    <div class="card-tag">Couple Retreat — Reconnect</div>
-                    <h3>Sunset & Serenity</h3>
-                    <p>Lamu or Diani. A quiet, curated escape for two. Private dhow cruises and spa sessions.</p>
-                    <div class="card-price">From $450 per person</div>
-                    <a href="https://wa.me/254722816001?text=Inquiry: Couple Retreat" class="btn-primary" style="display: block; text-align: center;">Book Retreat</a>
+                    <div class="card-tag" data-i18n="pkg2-tag">Couple Retreat — Reconnect</div>
+                    <h3 data-i18n="pkg2-title">Sunset & Serenity</h3>
+                    <p data-i18n="pkg2-p">Lamu or Diani. A quiet, curated escape for two. Private dhow cruises and spa sessions.</p>
+                    <div class="card-price" data-i18n="pkg2-price">From $450 per person</div>
+                    <a href="https://wa.me/254722816001?text=Inquiry: Couple Retreat" class="btn-primary" style="display: block; text-align: center;" data-i18n="pkg-btn">Book Retreat</a>
                 </div>
             </div>
 
             <!-- CATEGORY: NAIROBI PACKAGES -->
-            <div class="package-category">Nairobi Excursions</div>
+            <div class="package-category" data-i18n="cat-nairobi">Nairobi Excursions</div>
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1000&auto=format&fit=crop" alt="Nairobi" class="card-img">
                 <div class="card-content">
-                    <div class="card-tag">Full Day — The Capital Tour</div>
-                    <h3>Nairobi Heritage Discovery</h3>
-                    <p>Nairobi National Park, Sheldrick Elephant Orphanage, and Giraffe Centre. Lunch at Carnivore included.</p>
-                    <div class="card-price">$180 / 1,300元</div>
-                    <a href="https://wa.me/254722816001?text=Inquiry: Nairobi Full Day" class="btn-primary" style="display: block; text-align: center;">Book Full Day</a>
+                    <div class="card-tag" data-i18n="pkg3-tag">Full Day — The Capital Tour</div>
+                    <h3 data-i18n="pkg3-title">Nairobi Heritage Discovery</h3>
+                    <p data-i18n="pkg3-p">Nairobi National Park, Sheldrick Elephant Orphanage, and Giraffe Centre. Lunch at Carnivore included.</p>
+                    <div class="card-price" data-i18n="pkg3-price">$180 / 1,300元</div>
+                    <a href="https://wa.me/254722816001?text=Inquiry: Nairobi Full Day" class="btn-primary" style="display: block; text-align: center;" data-i18n="pkg-btn">Book Full Day</a>
                 </div>
             </div>
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1514905552197-0610a4d8fd73?q=80&w=1000&auto=format&fit=crop" alt="Elephant" class="card-img">
                 <div class="card-content">
-                    <div class="card-tag">Half Day — City Escape</div>
-                    <h3>Wildlife Express</h3>
-                    <p>4-hour morning or afternoon tour. Visit the Giraffe Centre and Elephant Orphanage. Quick and seamless.</p>
-                    <div class="card-price">$95 / 680元</div>
-                    <a href="https://wa.me/254722816001?text=Inquiry: Nairobi Half Day" class="btn-primary" style="display: block; text-align: center;">Book Half Day</a>
+                    <div class="card-tag" data-i18n="pkg4-tag">Half Day — City Escape</div>
+                    <h3 data-i18n="pkg4-title">Wildlife Express</h3>
+                    <p data-i18n="pkg4-p">4-hour morning or afternoon tour. Visit the Giraffe Centre and Elephant Orphanage. Quick and seamless.</p>
+                    <div class="card-price" data-i18n="pkg4-price">$95 / 680元</div>
+                    <a href="https://wa.me/254722816001?text=Inquiry: Nairobi Half Day" class="btn-primary" style="display: block; text-align: center;" data-i18n="pkg-btn">Book Half Day</a>
                 </div>
             </div>
 
             <!-- CATEGORY: SPECIAL GROUPS -->
-            <div class="package-category">Groups & Academia</div>
+            <div class="package-category" data-i18n="cat-groups">Groups & Academia</div>
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=1000&auto=format&fit=crop" alt="Group" class="card-img">
                 <div class="card-content">
-                    <div class="card-tag">Group Travel — Friends & Family</div>
-                    <h3>Savannah Squad Adventure</h3>
-                    <p>Multi-vehicle coordinated tours for 8+ people. Customized activities for all ages and special group rates.</p>
-                    <div class="card-price">Group Discounts Apply</div>
-                    <a href="https://wa.me/254722816001?text=Inquiry: Group Travel" class="btn-primary" style="display: block; text-align: center;">Inquire Group</a>
+                    <div class="card-tag" data-i18n="pkg5-tag">Group Travel — Friends & Family</div>
+                    <h3 data-i18n="pkg5-title">Savannah Squad Adventure</h3>
+                    <p data-i18n="pkg5-p">Multi-vehicle coordinated tours for 8+ people. Customized activities for all ages and special group rates.</p>
+                    <div class="card-price" data-i18n="pkg5-price">Group Discounts Apply</div>
+                    <a href="https://wa.me/254722816001?text=Inquiry: Group Travel" class="btn-primary" style="display: block; text-align: center;" data-i18n="pkg-btn">Inquire Group</a>
                 </div>
             </div>
 
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1523240685634-a87627b74ad3?q=80&w=1000&auto=format&fit=crop" alt="Students" class="card-img">
                 <div class="card-content">
-                    <div class="card-tag">Student Package — Education</div>
-                    <h3>The Scholar's Safari</h3>
-                    <p>Budget-friendly, safe, and educational. Focus on conservation and Swahili heritage. Ideal for university groups.</p>
-                    <div class="card-price">Special Student Rates</div>
-                    <a href="https://wa.me/254722816001?text=Inquiry: Student Package" class="btn-primary" style="display: block; text-align: center;">Inquire Scholar</a>
+                    <div class="card-tag" data-i18n="pkg6-tag">Student Package — Education</div>
+                    <h3 data-i18n="pkg6-title">The Scholar's Safari</h3>
+                    <p data-i18n="pkg6-p">Budget-friendly, safe, and educational. Focus on conservation and Swahili heritage. Ideal for university groups.</p>
+                    <div class="card-price" data-i18n="pkg6-price">Special Student Rates</div>
+                    <a href="https://wa.me/254722816001?text=Inquiry: Student Package" class="btn-primary" style="display: block; text-align: center;" data-i18n="pkg-btn">Inquire Scholar</a>
                 </div>
             </div>
 
@@ -169,30 +176,30 @@
 
     <section id="logistics" style="background: var(--bg2);">
         <div class="section-header">
-            <div class="hero-tag">Specialized Care</div>
-            <h2>Tailored Logistics</h2>
-            <p style="color: var(--gray); max-width: 700px; margin: 1.5rem auto;">We don't just provide transport; we provide peace of mind. Every group has unique needs.</p>
+            <div class="hero-tag" data-i18n="logistics-tag">Specialized Care</div>
+            <h2 data-i18n="logistics-title">Tailored Logistics</h2>
+            <p style="color: var(--gray); max-width: 700px; margin: 1.5rem auto;" data-i18n="logistics-p">We don't just provide transport; we provide peace of mind. Every group has unique needs.</p>
         </div>
         <div class="grid">
             <div class="card">
                 <div class="card-content">
                     <i class="fas fa-heart" style="color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem;"></i>
-                    <h3>Honeymoon Concierge</h3>
-                    <p>Personalized surprises, room decor, and private handlers for our couples.</p>
+                    <h3 data-i18n="log1-title">Honeymoon Concierge</h3>
+                    <p data-i18n="log1-p">Personalized surprises, room decor, and private handlers for our couples.</p>
                 </div>
             </div>
             <div class="card">
                 <div class="card-content">
                     <i class="fas fa-users" style="color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem;"></i>
-                    <h3>Group Coordinator</h3>
-                    <p>A dedicated logistics lead for large groups to ensure seamless movement.</p>
+                    <h3 data-i18n="log2-title">Group Coordinator</h3>
+                    <p data-i18n="log2-p">A dedicated logistics lead for large groups to ensure seamless movement.</p>
                 </div>
             </div>
             <div class="card">
                 <div class="card-content">
                     <i class="fas fa-graduation-cap" style="color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem;"></i>
-                    <h3>Student Security</h3>
-                    <p>Vetted drivers and 24/7 check-ins for student group safety and parental peace of mind.</p>
+                    <h3 data-i18n="log3-title">Student Security</h3>
+                    <p data-i18n="log3-p">Vetted drivers and 24/7 check-ins for student group safety and parental peace of mind.</p>
                 </div>
             </div>
         </div>
@@ -200,30 +207,30 @@
 
     <section id="contact">
         <div class="section-header">
-            <div class="hero-tag">The Reservation</div>
-            <h2>Start Your Custom Journey</h2>
+            <div class="hero-tag" data-i18n="contact-tag">The Reservation</div>
+            <h2 data-i18n="contact-title">Start Your Custom Journey</h2>
         </div>
         <div class="form-container">
             <form action="#">
                 <div class="form-group">
-                    <label>Your Name</label>
-                    <input type="text" placeholder="Full Name">
+                    <label data-i18n="form-name">Your Name</label>
+                    <input type="text" placeholder="Full Name" id="input-name">
                 </div>
                 <div class="form-group">
-                    <label>Traveler Type</label>
-                    <select>
-                        <option>Honeymoon / Couple</option>
-                        <option>Nairobi Excursion (Half/Full Day)</option>
-                        <option>Student / Academic Group</option>
-                        <option>Large Group / Family</option>
-                        <option>Corporate Retreat</option>
+                    <label data-i18n="form-type">Traveler Type</label>
+                    <select id="select-type">
+                        <option data-i18n="opt1">Honeymoon / Couple</option>
+                        <option data-i18n="opt2">Nairobi Excursion (Half/Full Day)</option>
+                        <option data-i18n="opt3">Student / Academic Group</option>
+                        <option data-i18n="opt4">Large Group / Family</option>
+                        <option data-i18n="opt5">Corporate Retreat</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Tell us more about your group...</label>
-                    <textarea rows="4" placeholder="Mention dates, number of people, or special requests..."></textarea>
+                    <label data-i18n="form-details">Tell us more about your group...</label>
+                    <textarea rows="4" placeholder="Mention dates, number of people, or special requests..." id="input-details"></textarea>
                 </div>
-                <button type="submit" class="btn-submit">Request Custom Itinerary</button>
+                <button type="submit" class="btn-submit" data-i18n="form-btn">Request Custom Itinerary</button>
             </form>
         </div>
     </section>
@@ -232,14 +239,182 @@
         <div class="footer-links">
             <a href="#">Instagram</a>
             <a href="#">LinkedIn</a>
-            <a href="https://wa.me/254722816001">WhatsApp Concierge</a>
+            <a href="https://wa.me/254722816001" data-i18n="footer-wa">WhatsApp Concierge</a>
         </div>
-        <p style="color: var(--gray); font-size: 0.8rem;">&copy; 2026 Roam Kenya Tours & Safaris | A Nexcom Ventures Partner. Every journey, a masterpiece.</p>
+        <p style="color: var(--gray); font-size: 0.8rem;" data-i18n="footer-cp">&copy; 2026 Roam Kenya Tours & Safaris | A Nexcom Ventures Partner. Every journey, a masterpiece.</p>
     </footer>
 
     <a href="https://wa.me/254722816001" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <script>
+        const translations = {
+            en: {
+                "nav-subtitle": "Tours & Safaris",
+                "nav-safaris": "Safaris",
+                "nav-logistics": "Logistics",
+                "nav-fleet": "Join Fleet",
+                "nav-contact": "Contact",
+                "nav-concierge": "Multilingual Concierge",
+                "hero-tag": "Est. 2026 — Nairobi, Kenya",
+                "hero-title": "Experiences Tailored <br><span>for Every Soul.</span>",
+                "hero-p": "From romantic honeymoon escapes to educational student journeys. We curate the perfect Kenya for you.",
+                "hero-btn-1": "Explore All Packages",
+                "hero-btn-2": "Request Custom Quote",
+                "safaris-tag": "Curated Collections",
+                "safaris-title": "Find Your Perfect Journey",
+                "cat-romance": "Romance & Honeymoon",
+                "pkg1-tag": "Honeymoon Suite — Pure Luxury",
+                "pkg1-title": "The Savannah Romance",
+                "pkg1-p": "Private bush dinners, luxury tented suites, and sunrise hot air balloon rides. A dream start to forever.",
+                "pkg1-price": "Tailored Inclusions",
+                "pkg-btn": "Inquire Now",
+                "cat-nairobi": "Nairobi Excursions",
+                "pkg3-tag": "Full Day — The Capital Tour",
+                "pkg3-title": "Nairobi Heritage Discovery",
+                "pkg3-p": "Nairobi National Park, Sheldrick Elephant Orphanage, and Giraffe Centre. Lunch at Carnivore included.",
+                "pkg3-price": "$180 / 1,300元",
+                "cat-groups": "Groups & Academia",
+                "logistics-tag": "Specialized Care",
+                "logistics-title": "Tailored Logistics",
+                "logistics-p": "We don't just provide transport; we provide peace of mind. Every group has unique needs.",
+                "contact-tag": "The Reservation",
+                "contact-title": "Start Your Custom Journey",
+                "form-name": "Your Name",
+                "form-type": "Traveler Type",
+                "form-btn": "Request Custom Itinerary",
+                "footer-wa": "WhatsApp Concierge",
+                "footer-cp": "© 2026 Roam Kenya Tours & Safaris | A Nexcom Ventures Partner."
+            },
+            zh: {
+                "nav-subtitle": "旅游与探险",
+                "nav-safaris": "野生动物园",
+                "nav-logistics": "后勤服务",
+                "nav-fleet": "加入车队",
+                "nav-contact": "联系我们",
+                "nav-concierge": "多语言礼宾服务",
+                "hero-tag": "成立于 2026 — 内罗毕, 肯尼亚",
+                "hero-title": "量身定制的 <br><span>灵魂之旅。</span>",
+                "hero-p": "从浪漫的蜜月之旅到教育性的学生之旅。我们为您策划完美的肯尼亚之行。",
+                "hero-btn-1": "探索所有套餐",
+                "hero-btn-2": "索取定制报价",
+                "safaris-tag": "精选系列",
+                "safaris-title": "寻找您的完美旅程",
+                "cat-romance": "浪漫与蜜月",
+                "pkg1-tag": "蜜月套房 — 纯粹奢华",
+                "pkg1-title": "萨瓦纳浪漫之约",
+                "pkg1-p": "私人丛林晚餐、豪华帐篷套房和日出热气球。梦想的永恒起点。",
+                "pkg1-price": "定制包含项目",
+                "pkg-btn": "立即咨询",
+                "cat-nairobi": "内罗毕短途旅行",
+                "pkg3-tag": "全天 — 首都之旅",
+                "pkg3-title": "内罗毕遗产探索",
+                "pkg3-p": "内罗毕国家公园、谢尔德里克大象孤儿院和长颈鹿中心。包含 Carnivore 午餐。",
+                "pkg3-price": "180美元 / 1,300人民币",
+                "cat-groups": "团体与学术",
+                "logistics-tag": "专业关怀",
+                "logistics-title": "量身定制的后勤",
+                "logistics-p": "我们不仅提供交通，更提供安心。每个团体都有独特的需求。",
+                "contact-tag": "预定咨询",
+                "contact-title": "开启您的定制之旅",
+                "form-name": "您的姓名",
+                "form-type": "旅行者类型",
+                "form-btn": "索取定制行程",
+                "footer-wa": "WhatsApp 礼宾部",
+                "footer-cp": "© 2026 肯尼亚漫游旅游与探险 | Nexcom Ventures 合作伙伴。"
+            },
+            es: {
+                "nav-subtitle": "Tours y Safaris",
+                "nav-safaris": "Safaris",
+                "nav-logistics": "Logística",
+                "nav-fleet": "Unirse a la Flota",
+                "nav-contact": "Contacto",
+                "nav-concierge": "Conserjería Multilingüe",
+                "hero-tag": "Est. 2026 — Nairobi, Kenia",
+                "hero-title": "Experiencias Diseñadas <br><span>para cada Alma.</span>",
+                "hero-p": "Desde escapadas románticas de luna de miel hasta viajes educativos para estudiantes.",
+                "hero-btn-1": "Ver Paquetes",
+                "hero-btn-2": "Cotización Personalizada",
+                "safaris-tag": "Colecciones Curadas",
+                "safaris-title": "Encuentra tu Viaje Perfecto",
+                "cat-romance": "Romance y Luna de Miel",
+                "pkg1-tag": "Suite de Luna de Miel — Puro Lujo",
+                "pkg1-title": "Romance en la Sabana",
+                "pkg1-p": "Cenas privadas, suites de lujo y globos aerostáticos al amanecer.",
+                "pkg1-price": "Inclusiones a Medida",
+                "pkg-btn": "Consultar Ahora",
+                "cat-nairobi": "Excursiones en Nairobi",
+                "pkg3-title": "Descubrimiento del Patrimonio",
+                "cat-groups": "Grupos y Académicos",
+                "logistics-title": "Logística a Medida",
+                "form-name": "Su Nombre",
+                "form-type": "Tipo de Viajero",
+                "form-btn": "Solicitar Itinerario",
+                "footer-wa": "Conserjería WhatsApp"
+            },
+            fr: {
+                "nav-subtitle": "Tours & Safaris",
+                "nav-safaris": "Safaris",
+                "nav-logistics": "Logistique",
+                "nav-fleet": "Rejoindre la Flotte",
+                "nav-concierge": "Conciergerie Multilingue",
+                "hero-title": "Des Expériences <br><span>pour Chaque Âme.</span>",
+                "hero-btn-1": "Tous les Forfaits",
+                "hero-btn-2": "Devis Personnalisé",
+                "safaris-title": "Votre Voyage Parfait",
+                "cat-romance": "Romantisme & Lune de Miel",
+                "pkg-btn": "Demander",
+                "cat-nairobi": "Excursions à Nairobi",
+                "cat-groups": "Groupes & Académie",
+                "logistics-title": "Logistique Sur Mesure",
+                "form-name": "Votre Nom",
+                "form-btn": "Demander l'Itinéraire"
+            },
+            de: {
+                "nav-subtitle": "Touren & Safaris",
+                "nav-safaris": "Safaris",
+                "nav-logistics": "Logistik",
+                "nav-concierge": "Mehrsprachiger Concierge",
+                "hero-title": "Erlebnisse für <br><span>jede Seele.</span>",
+                "hero-btn-1": "Alle Pakete",
+                "hero-btn-2": "Angebot Anfordern",
+                "cat-romance": "Romantik & Flitterwochen",
+                "pkg-btn": "Anfragen",
+                "cat-nairobi": "Nairobi Ausflüge",
+                "cat-groups": "Gruppen & Akademie",
+                "form-name": "Ihr Name",
+                "form-btn": "Reiseplan Anfordern"
+            }
+        };
+
+        function setLanguage(lang) {
+            // Update active state in switcher
+            document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+            document.getElementById(`lang-${lang}`).classList.add('active');
+
+            // Apply translations
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                } else if (translations['en'][key]) {
+                    // Fallback to English
+                    el.innerHTML = translations['en'][key];
+                }
+            });
+
+            // Update placeholders if needed
+            if (lang === 'zh') {
+                document.getElementById('input-name').placeholder = "全名";
+                document.getElementById('input-details').placeholder = "告诉我们您的梦想之旅...";
+            } else {
+                document.getElementById('input-name').placeholder = "Full Name";
+                document.getElementById('input-details').placeholder = "Mention dates, number of people, or special requests...";
+            }
+        }
+    </script>
 
 </body>
 </html>
