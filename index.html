@@ -77,6 +77,20 @@
             letter-spacing: 2px;
             font-size: 0.9rem;
         }
+
+        @media (max-width: 768px) {
+            .weather-bar {
+                top: 80px !important;
+                right: 0 !important;
+                left: 0 !important;
+                justify-content: center;
+                gap: 10px !important;
+            }
+            .weather-item {
+                font-size: 0.65rem !important;
+                padding: 4px 8px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -110,6 +124,19 @@
     </nav>
 
     <section id="hero">
+        <video autoplay muted loop playsinline id="hero-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.6;">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-safari-jeep-driving-through-the-savannah-34533-large.mp4" type="video/mp4">
+        </video>
+        <div class="weather-bar" style="position: absolute; top: 100px; right: 5%; display: flex; gap: 20px; z-index: 10;">
+            <div class="weather-item" style="background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 10px; font-size: 0.8rem;">
+                <span style="color: var(--primary);">Nairobi:</span>
+                <span>19°C <i class="fas fa-cloud-showers-heavy"></i></span>
+            </div>
+            <div class="weather-item" style="background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 10px; font-size: 0.8rem;">
+                <span style="color: var(--primary);">Maasai Mara:</span>
+                <span>28°C <i class="fas fa-sun"></i></span>
+            </div>
+        </div>
         <div class="hero-content">
             <div class="hero-tag" data-i18n="hero-tag">Est. 2026 — Nairobi, Kenya</div>
             <h1 data-i18n="hero-title">Experiences Tailored <br><span>for Every Soul.</span></h1>
@@ -117,6 +144,58 @@
             <div class="hero-btns">
                 <a href="#safaris" class="btn-primary" data-i18n="hero-btn-1">Explore All Packages</a>
                 <a href="#contact" class="btn-secondary" data-i18n="hero-btn-2">Request Custom Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="map" class="reveal" style="background: var(--bg2); padding: 80px 0;">
+        <div class="section-header">
+            <div class="hero-tag">Route Discovery</div>
+            <h2>The Roam Journey Map</h2>
+            <p style="color: var(--gray); max-width: 600px; margin: 1rem auto;">Explore our most traveled routes through the heart of Kenya's wilderness.</p>
+        </div>
+        <div class="map-container" style="max-width: 1000px; margin: 4rem auto; position: relative; padding: 2rem;">
+            <!-- Simplified Stylized Map SVG -->
+            <svg viewBox="0 0 800 500" style="width: 100%; height: auto; filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));">
+                <path d="M150,250 Q300,100 450,200 T700,300" fill="none" stroke="var(--primary)" stroke-width="2" stroke-dasharray="10,5" opacity="0.4">
+                    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="5s" repeatCount="indefinite" />
+                </path>
+                
+                <!-- Location Nodes -->
+                <circle cx="150" cy="250" r="8" fill="var(--primary)" />
+                <text x="130" y="280" fill="var(--text)" font-size="14" font-weight="bold">Maasai Mara</text>
+                <text x="130" y="300" fill="var(--gray)" font-size="12">Big Five Reserve</text>
+
+                <circle cx="350" cy="180" r="8" fill="var(--primary)" />
+                <text x="330" y="160" fill="var(--text)" font-size="14" font-weight="bold">Lake Nakuru</text>
+                <text x="330" y="140" fill="var(--gray)" font-size="12">Flamingo Haven</text>
+
+                <circle cx="500" cy="230" r="10" fill="var(--primary)">
+                    <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <text x="480" y="265" fill="var(--text)" font-size="16" font-weight="bold">Nairobi HQ</text>
+                <text x="480" y="285" fill="var(--gray)" font-size="12">The Gateway</text>
+
+                <circle cx="700" cy="300" r="8" fill="var(--primary)" />
+                <text x="680" y="335" fill="var(--text)" font-size="14" font-weight="bold">Amboseli</text>
+                <text x="680" y="355" fill="var(--gray)" font-size="12">Kilimanjaro Views</text>
+            </svg>
+            
+            <div class="grid" style="margin-top: 3rem;">
+                <div class="card" style="padding: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-size: 2rem; color: var(--primary);">01</span>
+                    <div>
+                        <h4 style="margin: 0;">Mara Express</h4>
+                        <p style="margin: 0; font-size: 0.8rem; color: var(--gray);">3 Days • Nairobi - Mara</p>
+                    </div>
+                </div>
+                <div class="card" style="padding: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-size: 2rem; color: var(--primary);">02</span>
+                    <div>
+                        <h4 style="margin: 0;">Southern Circuit</h4>
+                        <p style="margin: 0; font-size: 0.8rem; color: var(--gray);">7 Days • Mara - Nakuru - Amboseli</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
