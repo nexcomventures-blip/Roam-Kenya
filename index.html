@@ -10,6 +10,38 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Modern Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .testimonial-card {
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            position: relative;
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        .testimonial-card i.quote-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.1;
+            color: var(--primary);
+        }
+        
         .lang-switch {
             display: flex;
             gap: 10px;
@@ -89,7 +121,7 @@
         </div>
     </section>
 
-    <section id="safaris">
+    <section id="safaris" class="reveal">
         <div class="section-header">
             <div class="hero-tag" data-i18n="safaris-tag">Curated Collections</div>
             <h2 data-i18n="safaris-title">Find Your Perfect Journey</h2>
@@ -174,7 +206,7 @@
         </div>
     </section>
 
-    <section id="logistics" style="background: var(--bg2);">
+    <section id="logistics" style="background: var(--bg2);" class="reveal">
         <div class="section-header">
             <div class="hero-tag" data-i18n="logistics-tag">Specialized Care</div>
             <h2 data-i18n="logistics-title">Tailored Logistics</h2>
@@ -205,7 +237,7 @@
         </div>
     </section>
 
-    <section id="fleet">
+    <section id="fleet" class="reveal">
         <div class="section-header">
             <div class="hero-tag" data-i18n="fleet-tag">Partner with Us</div>
             <h2 data-i18n="fleet-title">Join the Roam Fleet</h2>
@@ -227,7 +259,38 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="testimonials" class="reveal" style="padding: 100px 0;">
+        <div class="section-header">
+            <div class="hero-tag" data-i18n="test-tag">Guest Experiences</div>
+            <h2 data-i18n="test-title">Voices of the Savannah</h2>
+        </div>
+        <div class="grid" style="max-width: 1100px; margin: 0 auto;">
+            <div class="testimonial-card">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p style="font-style: italic; margin-bottom: 1.5rem; color: var(--text);" data-i18n="test1-p">"Our honeymoon in the Mara was absolute magic. Roam Kenya handled every detail, from the private sundowners to the logistics, with such grace. Truly the art of safari."</p>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold;">SC</div>
+                    <div>
+                        <h4 style="font-size: 0.9rem;">Sarah & Chris</h4>
+                        <p style="font-size: 0.75rem; color: var(--gray);">London, UK</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p style="font-style: italic; margin-bottom: 1.5rem; color: var(--text);" data-i18n="test2-p">"Brought my university group for a heritage tour. The education-focused itinerary was brilliant, and the safety protocols gave everyone peace of mind. Highly recommend for academic groups!"</p>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold;">DR</div>
+                    <div>
+                        <h4 style="font-size: 0.9rem;">Dr. Robert Chen</h4>
+                        <p style="font-size: 0.75rem; color: var(--gray);">Beijing, China</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
         <div class="section-header">
             <div class="hero-tag" data-i18n="contact-tag">The Reservation</div>
             <h2 data-i18n="contact-title">Start Your Custom Journey</h2>
@@ -271,6 +334,21 @@
     </a>
 
     <script>
+        // Scroll Reveal Implementation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
         const translations = {
             en: {
                 "nav-subtitle": "Tours & Safaris",
@@ -310,6 +388,10 @@
                 "fleet-card2-h": "Tour Operators",
                 "fleet-card2-p": "Collaborate with us for seamless logistics, professional handlers, and shared marketing opportunities.",
                 "fleet-btn2": "Partner With Us",
+                "test-tag": "Guest Experiences",
+                "test-title": "Voices of the Savannah",
+                "test1-p": "\"Our honeymoon in the Mara was absolute magic. Roam Kenya handled every detail, from the private sundowners to the logistics, with such grace. Truly the art of safari.\"",
+                "test2-p": "\"Brought my university group for a heritage tour. The education-focused itinerary was brilliant, and the safety protocols gave everyone peace of mind. Highly recommend for academic groups!\"",
                 "contact-tag": "The Reservation",
                 "contact-title": "Start Your Custom Journey",
                 "form-name": "Your Name",
@@ -356,6 +438,10 @@
                 "fleet-card2-h": "旅游运营商",
                 "fleet-card2-p": "与我们合作，实现无缝物流、专业处理和共享营销机会。",
                 "fleet-btn2": "与我们合作",
+                "test-tag": "客人的体验",
+                "test-title": "萨瓦纳的声音",
+                "test1-p": "“我们在马拉的蜜月绝对是魔幻般的。Roam Kenya 优雅地处理了从私人日落晚餐到物流的每一个细节。真正的野生动物艺术。”",
+                "test2-p": "“带我的大学团队进行了一次遗产之旅。以教育为重点的行程非常精彩，安全协议让每个人都感到安心。强烈推荐给学术团体！”",
                 "contact-tag": "预定咨询",
                 "contact-title": "开启您的定制之旅",
                 "form-name": "您的姓名",
