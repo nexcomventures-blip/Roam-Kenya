@@ -123,21 +123,22 @@
         </div>
     </nav>
 
-    <section id="hero">
-        <video autoplay muted loop playsinline id="hero-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.6;">
+    <section id="hero" style="background: url('https://images.pexels.com/photos/259447/pexels-photo-259447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center/cover no-repeat; position: relative;">
+        <video autoplay muted loop playsinline id="hero-video" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0.6;">
+            <source src="https://v1.bg.ot07.com/api/v1/render/ezgif-1-3965646564.mp4" type="video/mp4">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-safari-jeep-driving-through-the-savannah-34533-large.mp4" type="video/mp4">
         </video>
-        <div class="weather-bar" style="position: absolute; top: 100px; right: 5%; display: flex; gap: 20px; z-index: 10;">
-            <div class="weather-item" style="background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 10px; font-size: 0.8rem;">
-                <span style="color: var(--primary);">Nairobi:</span>
-                <span>19°C <i class="fas fa-cloud-showers-heavy"></i></span>
+        <div class="weather-bar" style="position: absolute; top: 120px; right: 5%; display: flex; gap: 20px; z-index: 10;">
+            <div class="weather-item" style="background: rgba(0,0,0,0.6); padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); display: flex; align-items: center; gap: 12px; font-size: 0.85rem; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                <span style="color: var(--primary); font-weight: 700;">Nairobi:</span>
+                <span>19°C <i class="fas fa-cloud-showers-heavy" style="color: #4facfe;"></i></span>
             </div>
-            <div class="weather-item" style="background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); display: flex; align-items: center; gap: 10px; font-size: 0.8rem;">
-                <span style="color: var(--primary);">Maasai Mara:</span>
-                <span>28°C <i class="fas fa-sun"></i></span>
+            <div class="weather-item" style="background: rgba(0,0,0,0.6); padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); display: flex; align-items: center; gap: 12px; font-size: 0.85rem; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                <span style="color: var(--primary); font-weight: 700;">Maasai Mara:</span>
+                <span>28°C <i class="fas fa-sun" style="color: #f6d365;"></i></span>
             </div>
         </div>
-        <div class="hero-content">
+        <div class="hero-content" style="position: relative; z-index: 5;">
             <div class="hero-tag" data-i18n="hero-tag">Est. 2026 — Nairobi, Kenya</div>
             <h1 data-i18n="hero-title">Experiences Tailored <br><span>for Every Soul.</span></h1>
             <p data-i18n="hero-p">From romantic honeymoon escapes to educational student journeys. We curate the perfect Kenya for you.</p>
